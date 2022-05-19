@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilia Teste </title>
+    <style>
+        body{
+            font: normal 20pt Arial;
+        }
+        div#res{
+            margin-top: 30px;
+        }
+        body{
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teste na Planilia</h1>
+    <input type="Text" name="Nome" id= "Nome">
+    <input type="Number" name="CPF" id="CPF">
+    <input type="button" value= "Enviar" onclick="somar()">
+    <div id= "res" >Resultado:</div>
+<form method="post" id="teste"
+    action="https://sheetdb.io/api/v1/my8nga5lm5r3t">
+      Nome: <input name="data[Nome]">
+      CPF: <input name="data[CPF]">
+      OS: <input name="data[OS]">
+      <button type="submit">Enviar</button>
+</form>
+    <script>
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    fetch(form.action, {
+        method : "POST",
+        body: new FormData(document.getElementById("teste")),
+    }).then(
+        response => response.json()
+    ).then((html) => {
+      // you can put any JS code here
+      alert('Foi Caraai')
+    });
+  });
+            
+        function somar() {
+            var nomes = window.document.getElementById('Nome') 
+            var cpfs = window.document.querySelector('input#CPF')
+            var res = window.document.getElementById('res')
+            var nome1 =  (nomes.value)
+            var cpf1 =  Number (cpfs.value)
+            var dado= nome1 + cpf1
+            res.innerHTML = `Nome do Cliente: "${nome1}", <p> CPF: "${cpf1}" ,  <p> Nome e CPF: ${dado}</strong>`
+ 
+            
+            }
+    </script>
+</body>
+</html>
